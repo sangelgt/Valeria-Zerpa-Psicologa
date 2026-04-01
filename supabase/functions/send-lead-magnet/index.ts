@@ -67,6 +67,8 @@ serve(async (req: Request) => {
 
     const { full_name, email, lead_magnet_downloaded } = payload.record
 
+    console.log(`📩 Procesando nuevo lead: ${email} | Magnet: ${lead_magnet_downloaded}`)
+
     // Validación mínima
     if (!email) {
       console.error("❌ Email vacío en el payload del lead")
@@ -89,6 +91,7 @@ serve(async (req: Request) => {
     // ── Enviar correo con Resend ──────────────────────────────
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")
     if (!RESEND_API_KEY) {
+      console.error("❌ RESEND_API_KEY no encontrada en variables de entorno")
       throw new Error("RESEND_API_KEY no está configurada en las variables de entorno.")
     }
 
@@ -99,13 +102,14 @@ serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Valeria Zerpa <onboarding@resend.dev>",
+        from: "Valeria Zerpa <valeriaz.atencion@proton.me>",
         reply_to: "valeriaz.atencion@proton.me",
         to: [email],
         subject: config.subject,
         html: htmlBody,
       }),
     })
+
 
     if (!resendResponse.ok) {
       const errorBody = await resendResponse.text()
