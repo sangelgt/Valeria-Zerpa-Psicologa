@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Tu Manual de Duelo Migratorio — Valeria Zerpa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #f5fbfa;
+      color: #2d2d2d;
+      line-height: 1.7;
+    }
+    .wrapper {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(168, 216, 208, 0.15);
+    }
+
+    /* Header — versión Aqua / Menta para el perfil migratorio */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #1f2d3a 60%, #1a3030 100%);
+      padding: 52px 48px 48px;
+      text-align: center;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 30px;
+      background: #ffffff;
+      border-radius: 30px 30px 0 0;
+    }
+    .brand-tag {
+      display: inline-block;
+      color: #a8d8d0;
+      font-size: 10px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .header h1 {
+      font-size: 30px;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    .header h1 em { color: #a8d8d0; font-style: italic; }
+    .header p {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 300;
+    }
+
+    .body { padding: 40px 48px; }
+
+    .greeting {
+      font-size: 17px;
+      color: #4a4a4a;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .greeting strong { color: #1a1a2e; }
+
+    /* Validación emocional en tono aqua */
+    .validation-block {
+      background: linear-gradient(135deg, #e8f6f4 0%, #f0f9f8 100%);
+      border-left: 3px solid #a8d8d0;
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .validation-block p {
+      font-size: 16px;
+      color: #3a5a58;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .resource-section {
+      text-align: center;
+      margin: 36px 0;
+    }
+    .resource-section .overline {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #a8d8d0;
+      margin-bottom: 16px;
+    }
+    .resource-section h2 {
+      font-size: 24px;
+      font-weight: 400;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+    }
+    .resource-section p {
+      font-size: 14px;
+      color: #888;
+      font-family: 'Arial', sans-serif;
+      max-width: 380px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+
+    /* CTA en tono Aqua */
+    .cta-button {
+      display: inline-block;
+      padding: 18px 48px;
+      background: linear-gradient(135deg, #a8d8d0 0%, #7abdba 100%);
+      color: #1a1a2e !important;
+      text-decoration: none;
+      border-radius: 100px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(168, 216, 208, 0.4);
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(to right, #a8d8d0, #e8a4a4);
+      margin: 40px auto;
+      border-radius: 2px;
+    }
+
+    .valeria-message { margin: 32px 0; }
+    .valeria-message p {
+      font-size: 15px;
+      color: #5a5a5a;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .signature {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid #e8f6f4;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .signature-avatar {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #a8d8d0 0%, #e8a4a4 100%);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      font-weight: 300;
+    }
+    .signature-text .name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    .signature-text .role {
+      font-size: 12px;
+      color: #a8d8d0;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      background: #f5fbfa;
+      padding: 28px 48px;
+      text-align: center;
+      border-top: 1px solid #e8f6f4;
+    }
+    .footer p {
+      font-size: 11px;
+      color: #bbb;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+    .footer a { color: #a8d8d0; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .wrapper { margin: 0; border-radius: 0; }
+      .header, .body, .footer { padding-left: 28px; padding-right: 28px; }
+      .header h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="brand-tag">Valeria Zerpa · Psicología Clínica Integrativa</div>
+      <h1>Tu historia no se quedó<br/><em>en el aeropuerto.</em></h1>
+      <p>Manual de Duelo Migratorio — Recurso descargado con cuidado</p>
+    </div>
+
+    <!-- CUERPO -->
+    <div class="body">
+
+      <p class="greeting">
+        Hola, <strong>{{nombre}}</strong> 👋<br/>
+        El que hayas buscado este material me dice algo importante: que te estás permitiendo
+        mirar con honestidad lo que estás viviendo. Y eso, en medio del ruido de adaptarse a
+        un lugar nuevo, requiere valentía.
+      </p>
+
+      <!-- Validación emocional del perfil migrante -->
+      <div class="validation-block">
+        <p>
+          "Es completamente normal sentirse extraño en un lugar nuevo, incluso cuando todo
+          'en papel' parece estar bien. Tu historia, tu forma de ser en el mundo,
+          no se borró cuando cambiaste de país — solo está buscando un nuevo espacio
+          donde instalarse."
+        </p>
+      </div>
+
+      <!-- Entrega del recurso -->
+      <div class="resource-section">
+        <div class="overline">Tu recurso gratuito está listo</div>
+        <h2>Manual de Duelo Migratorio</h2>
+        <p>
+          Herramientas clínicas para entender el proceso de adaptación y empezar
+          a reconstruir tu identidad y paz mental en el extranjero.
+        </p>
+        <a href="{{enlace_descarga}}" class="cta-button">
+          Descargar mi Manual →
+        </a>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Mensaje personal de Valeria -->
+      <div class="valeria-message">
+        <p>
+          Este manual no te va a decir que "hay que ser positivos" ni que "en un año
+          te acostumbras". Lo que encontrarás adentro es una mirada honesta y clínica
+          sobre lo que significa perder los siete pilares de pertenencia que tenías
+          — y cómo empezar a construir nuevos anclajes, uno a la vez.
+        </p>
+        <p>
+          Date el tiempo que necesitas. Y si en algún momento sientes que necesitas
+          un espacio de acompañamiento más cercano, aquí estaré.
+          Sin prisa, sin fórmulas mágicas.
+        </p>
+      </div>
+
+      <!-- Firma -->
+      <div class="signature">
+        <div class="signature-avatar">V</div>
+        <div class="signature-text">
+          <div class="name">Valeria Zerpa</div>
+          <div class="role">Psicóloga Clínica Integrativa</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>
+        Recibiste este correo porque solicitaste el <strong>Manual de Duelo Migratorio</strong> en nuestro sitio web.<br/>
+        Respetamos tu privacidad — nunca compartiremos tu información.<br/>
+        <a href="mailto:valeriaz.atencion@proton.me">valeriaz.atencion@proton.me</a>
+        &nbsp;·&nbsp;
+        <a href="#">Cancelar suscripción</a>
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-pink: #FF96C5;
+  --color-brand-aqua: #86E3CE;
+  --color-brand-green: #B2E5D0;
+  --color-brand-white: #FAFBFD;
+  --color-brand-dark: #1A1D23;
+
+  /* Custom utility colors (Contrast-optimized) */
+  --color-brand-pink-opaque: rgba(255, 150, 197, 0.15);
+  --color-brand-aqua-opaque: rgba(134, 227, 206, 0.15);
+
+  --font-sans: "Inter", "Outfit", system-ui, sans-serif;
+  
+  /* Text Contrast Overrides */
+  --color-text-dim: #4B5563;
+  --color-text-subtle: #6B7280;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+:root {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-dark);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Base Utility for Glassmorphism (Agency Style) */
+.glass {
+  @apply bg-white/30 backdrop-blur-md border border-white/20;
+}
+
+/* Custom Text Reveal Base */
+.text-reveal {
+  overflow: hidden;
+}
