@@ -19,6 +19,13 @@ export const ContactForm = () => {
     const segment = formData.get('segment') as string
     const message = formData.get('message') as string
 
+    // Mapear el valor del radio al nombre exacto que usa la Edge Function
+    const leadMagnetMap: Record<string, string> = {
+      'youth': 'Guía de Éxito Escolar',
+      'adult': 'Manual de Duelo Migratorio',
+    }
+    const leadMagnetName = leadMagnetMap[segment] ?? 'Guía de Éxito Escolar'
+
     const { error: insertError } = await supabase
       .from('leads_web')
       .insert([
@@ -26,7 +33,7 @@ export const ContactForm = () => {
           full_name: name,
           email: email,
           interests: [segment],
-          lead_magnet_downloaded: segment,
+          lead_magnet_downloaded: leadMagnetName,
           message: message,
           source: 'website'
         }

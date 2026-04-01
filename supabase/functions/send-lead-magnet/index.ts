@@ -95,29 +95,43 @@ serve(async (req: Request) => {
       throw new Error("RESEND_API_KEY no está configurada en las variables de entorno.")
     }
 
+    // ── Diagnóstico de API Key ────────────────────────────────
+    console.log(`🔑 API Key presente: ${RESEND_API_KEY ? "SÍ" : "NO"} | Longitud: ${RESEND_API_KEY?.length ?? 0}`)
+
+    const resendPayload = {
+      // IMPORTANTE: 'from' DEBE usar el dominio verificado en Resend.
+      // No se puede usar proton.me ni gmail como remitente.
+      from: "Valeria Zerpa <hola@valeriazerpa.qzz.io>",
+      // reply_to apunta al correo real de Valeria para que pueda responder leads
+      reply_to: "valeriaz.atencion@proton.me",
+      // Correo del lead que descargó el recurso
+      to: [email],
+      subject: config.subject,
+      html: htmlBody,
+    }
+
+    console.log(`📤 Enviando correo a ${email} desde hola@valeriazerpa.qzz.io`)
+
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: "Valeria Zerpa <valeriaz.atencion@proton.me>",
-        reply_to: "valeriaz.atencion@proton.me",
-        to: [email],
-        subject: config.subject,
-        html: htmlBody,
-      }),
+      body: JSON.stringify(resendPayload),
     })
 
+    // ── Captura detallada de errores de Resend ───────────────
+    const rawBody = await resendResponse.text()
+    console.log(`📬 Resend HTTP Status: ${resendResponse.status}`)
+    console.log(`📬 Resend Response Body: ${rawBody}`)
 
     if (!resendResponse.ok) {
-      const errorBody = await resendResponse.text()
-      console.error(`❌ Error de Resend [${resendResponse.status}]:`, errorBody)
-      throw new Error(`Resend API error: ${errorBody}`)
+      console.error(`❌ Error de Resend [${resendResponse.status}]: ${rawBody}`)
+      throw new Error(`Resend API error ${resendResponse.status}: ${rawBody}`)
     }
 
-    const resendData = await resendResponse.json()
+    const resendData = JSON.parse(rawBody)
     console.log(`✅ Correo enviado a ${email} | ID: ${resendData.id} | Magnet: ${lead_magnet_downloaded}`)
 
     return new Response(
