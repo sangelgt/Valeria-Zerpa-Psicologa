@@ -99,7 +99,7 @@ serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Valeria Zerpa <recursos@valeriazerpa.com>",
+        from: "Valeria Zerpa <onboarding@resend.dev>",
         reply_to: "valeriaz.atencion@proton.me",
         to: [email],
         subject: config.subject,
