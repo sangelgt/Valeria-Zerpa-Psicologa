@@ -19,7 +19,7 @@ function App() {
   const cursorFollower = useRef<HTMLDivElement>(null)
   const [legalModal, setLegalModal] = useState<'none'|'terms'|'privacy'>('none')
   
-  const waLink = "https://wa.me/584140000000?text=Hola%20Valeria,%20me%20gustaría%20iniciar%20una%20evaluación."
+  const waLink = "https://wa.me/584148089418?text=%C2%A1Hola%2C%20Valeria%21%20Un%20gusto%20saludarte.%20%F0%9F%91%8B%20Vengo%20de%20tu%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20consultas%20y%20servicios%20terap%C3%A9uticos.%20%E2%9C%A8"
 
   useGSAP(() => {
     // 1. Cursor Follow Animation (Interactive Background)
