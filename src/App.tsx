@@ -10,6 +10,7 @@ import { ResilienceMap } from './components/ResilienceMap'
 import { LeadMagnets } from './components/LeadMagnets'
 import { AboutMe } from './components/AboutMe'
 import { Modal } from './components/Modal'
+import { Analytics } from '@vercel/analytics/react'
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin)
@@ -230,6 +231,7 @@ function App() {
         </div>
       </Modal>
 
+      <Analytics />
     </div>
   )
 }
